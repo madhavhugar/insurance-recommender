@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_jwt import JWT
 from sqlalchemy_utils import create_database, database_exists
+from logging.config import dictConfig
 
 from api.config import Config
 from api.views.insurance.routes import insurance
@@ -9,6 +10,23 @@ from api.models.base import db
 from api.jwt import authenticate, identity
 from api.models.questionnare import Questionnare
 
+
+# logging configuration
+dictConfig({
+    'version': 1,
+    'formatters': {'default': {
+        'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+    }},
+    'handlers': {'wsgi': {
+        'class': 'logging.StreamHandler',
+        'stream': 'ext://flask.logging.wsgi_errors_stream',
+        'formatter': 'default'
+    }},
+    'root': {
+        'level': 'INFO',
+        'handlers': ['wsgi']
+    }
+})
 
 app = Flask(__name__)
 

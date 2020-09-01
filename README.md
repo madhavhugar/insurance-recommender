@@ -23,6 +23,7 @@ API that recommends an insurance policy based on a questionnaire answers
 
 - Start the database container
     ```
+    docker-compose up --no-start postgres
     docker-compose start postgres
     ```
 

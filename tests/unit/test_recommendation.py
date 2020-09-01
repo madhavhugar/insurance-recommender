@@ -51,7 +51,7 @@ def test_family_recommendation():
 
 
 def test_city_recommendation():
-    # should recommend users when city is set
+    # should recommend users when address is set
     city = CityRecommendation('apt 10, xyz street, berlin')
     expected = {
         'id': 'city',
@@ -67,7 +67,7 @@ def test_city_recommendation():
 
 
 def test_country_recommendation():
-    # should recommend users when city is set
+    # should recommend users when address is set
     country = CountryRecommendation('apt 10, xyz street, berlin')
     expected = {
         'id': 'country',
